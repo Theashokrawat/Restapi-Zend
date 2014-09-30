@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ZendSkeletonApplication
 =======================
 
@@ -75,3 +76,9 @@ project and you should be ready to go! It should look something like below:
             Allow from all
         </Directory>
     </VirtualHost>
+=======
+Restapi-Zend
+============
+
+A Brief description how to create rest api's for devlopment.
+>>>>>>> 05b4b1111a9bdc12491139a6344910a11fcfecc0
