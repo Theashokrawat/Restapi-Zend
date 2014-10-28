@@ -1,4 +1,4 @@
-<?php
+<?php echo "fdgdfgdf"; die;
 namespace Album\Model;
 
 use Zend\InputFilter\Factory as InputFactory;     // <-- Add this import
@@ -6,18 +6,18 @@ use Zend\InputFilter\InputFilter;                 // <-- Add this import
 use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
 use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 
-class Album implements InputFilterAwareInterface
+class News implements InputFilterAwareInterface
 {
     public $id;
-    public $artist;
-    public $title;
+    public $addon_name;
+    public $status;
     protected $inputFilter;                       // <-- Add this variable
 
     public function exchangeArray($data)
     {
         $this->id     = (isset($data['id']))     ? $data['id']     : null;
-        $this->artist = (isset($data['artist'])) ? $data['artist'] : null;
-        $this->title  = (isset($data['title']))  ? $data['title']  : null;
+        $this->addon_name = (isset($data['addon_name'])) ? $data['addon_name'] : null;
+        $this->status  = (isset($data['status']))  ? $data['status']  : null;
     }
         // Add the following method:
     public function getArrayCopy()
@@ -47,7 +47,7 @@ class Album implements InputFilterAwareInterface
             )));
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'artist',
+                'name'     => 'addon_name',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
@@ -66,7 +66,7 @@ class Album implements InputFilterAwareInterface
             )));
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'title',
+                'name'     => 'status',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),

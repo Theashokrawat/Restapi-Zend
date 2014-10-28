@@ -3,6 +3,8 @@ namespace Album;
 // Add these import statements:
 use Album\Model\Album;
 use Album\Model\AlbumTable;
+use Album\Model\News;
+use Album\Model\NewsTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -42,7 +44,18 @@ class Module
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Album());
-                    return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway('albums', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Album\Model\NewsTable' => function($sm) {
+                    $tableGateway = $sm->get('NewsTableGateway');
+                    $table = new NewsTable($tableGateway);
+                    return $table;
+                },
+                'NewsTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new News());
+                    return new TableGateway('addons', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

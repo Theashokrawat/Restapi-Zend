@@ -3,7 +3,7 @@ namespace Album\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
-class AlbumTable
+class NewsTable
 {
     protected $tableGateway;
 
@@ -18,7 +18,7 @@ class AlbumTable
         return $resultSet;
     }
 
-    public function getAlbum($id)
+    public function getNews($id)
     {
         $id  = (int) $id;
         $rowset = $this->tableGateway->select(array('id' => $id));
@@ -29,18 +29,18 @@ class AlbumTable
         return $row;
     }
 
-    public function saveAlbum(Album $album)
+    public function saveAlbum(Album $news)
     {
         $data = array(
-            'artist' => $album->artist,
-            'title'  => $album->title,
+            'addon_name' => $news->addon_name,
+            'status'  => $news->status,
         );
 
-        $id = (int)$album->id;
+        $id = (int)$news->id;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
-            if ($this->getAlbum($id)) {
+            if ($this->getNews($id)) {
                 $this->tableGateway->update($data, array('id' => $id));
             } else {
                 throw new \Exception('Form id does not exist');
@@ -48,7 +48,7 @@ class AlbumTable
         }
     }
 
-    public function deleteAlbum($id)
+    public function deleteNews($id)
     {
         $this->tableGateway->delete(array('id' => $id));
     }

@@ -3,7 +3,7 @@ namespace Album\Form;
 
 use Zend\Form\Form;
 
-class AlbumForm extends Form
+class NewsForm extends Form
 {
     public function __construct($name = null)
     {
@@ -17,7 +17,7 @@ class AlbumForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'artist',
+            'name' => 'addon_name',
             'attributes' => array(
                 'type'  => 'text',
             ),
@@ -26,7 +26,7 @@ class AlbumForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'title',
+            'name' => 'status',
             'attributes' => array(
                 'type'  => 'text',
             ),
